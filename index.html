@@ -62,12 +62,16 @@ payment = new PaymentRequest(
 }
 
 function pay(){
-payment.show().then(function(response) {
-  // Process response
-  response.complete("success");
-}).catch(function(err) {
-  alert(err);
-});
+	try{
+		payment.show().then(function(response) {
+		  // Process response
+		  response.complete("success");
+		}).catch(function(err) {
+		  alert("Error to complete"+err);
+		});
+	}catch(e){
+		alert("something went wrong"+e);
+	}
 }
 
 </script>
