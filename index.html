@@ -7,6 +7,12 @@
 var payment =null;
 
 function test() {
+	if(window.PaymentRequest) {  
+	  // Use PaymentRequest API  
+	} else { 
+	alert("Payment API not supported on your browser");
+	  return   
+	}
 
 	var supportedInstruments = [
   {
