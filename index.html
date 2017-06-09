@@ -1,0 +1,78 @@
+<html>
+<head>
+<script src="https://storage.googleapis.com/prshim/v1/payment-shim.js"></script>
+
+<script>
+
+var payment =null;
+
+function test() {
+
+	var supportedInstruments = [
+  {
+    supportedMethods: ['basic-card'],
+    data: {
+      supportedNetworks: ['amex', 'discover', 'mastercard', 'visa']
+    }
+  },
+  {
+    supportedMethods: ['https://android.com/pay'],
+    data: {
+      
+      merchantId: '02510116604241796260',
+      environment: 'TEST',
+      
+      allowedCardNetworks: ['AMEX', 'MASTERCARD', 'VISA', 'DISCOVER'],
+      paymentMethodTokenizationParameters: {
+        tokenizationType: 'GATEWAY_TOKEN',
+        parameters: {
+          'gateway': 'stripe',
+          
+          'stripe:publishableKey': 'pk_live_fD7ggZCtrB0vJNApRX5TyJ9T',
+          'stripe:version': '2016-07-06'
+        }
+      }
+    }
+  }
+];
+
+const details= {  
+  total: {
+    label: 'Pay Abhi',  
+    amount:{  
+      currency: 'USD',  
+      value: 0  
+    }  
+  }
+};  
+
+const options = {};
+
+payment = new PaymentRequest(
+  supportedInstruments, // required payment method data
+  details,              // required information about transaction
+  options               // optional parameter for things like shipping, etc.
+);
+}
+
+function pay(){
+payment.show().then(function(response) {
+  // Process response
+  response.complete("success");
+}).catch(function(err) {
+  console.error("Uh oh, something bad happened", err.message);
+});
+}
+
+</script>
+
+</head>
+<body>
+
+<button type="button" onclick="test()">Init Payment </button>
+<button type="button" onclick="pay()">Pay me $0</button>
+
+
+<body>
+
+</html>
