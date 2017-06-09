@@ -65,7 +65,7 @@ function pay(){
 	try{
 		payment.show().then(function(response) {
 		  // Process response
-		  alert(JSON.stringify(result.toJSON()));
+		  
 		  response.complete("success");
 		}).catch(function(err) {
 		  alert("Error to complete"+err);
