@@ -66,7 +66,7 @@ payment.show().then(function(response) {
   // Process response
   response.complete("success");
 }).catch(function(err) {
-  console.error("Uh oh, something bad happened", err.message);
+  alert(err);
 });
 }
 
