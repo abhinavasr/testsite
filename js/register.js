@@ -33,6 +33,9 @@ async function app() {
   // When clicking a button, add an example for that class.
   document.getElementById('class-a').addEventListener('click', () => addExample(document.getElementById('username').value));
 
+  document.getElementById('class-b').addEventListener('click', () => clearData());
+
+
   const webcamElement = document.getElementById('webcam');
 
   while (true) {
@@ -100,4 +103,9 @@ function loadClassifierFromLocalStorage() {
     classifier.setClassifierDataset(tensorObj)
   }
   return classifier;
+}
+
+function clearData(){
+  localStorage.removeItem("face_data");
+  alert("Registration Face data has been cleared");
 }

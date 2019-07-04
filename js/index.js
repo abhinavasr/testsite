@@ -13,6 +13,8 @@ async function app() {
   await setupWebcam();
   const webcamElement = document.getElementById('webcam');
 
+  document.getElementById('console').addEventListener('click', () => userLogin(document.getElementById('hiddenAuthData').value));
+
   while (true) {
     if (classifier.getNumClasses() > 0) {
       // Get the activation from mobilenet from the webcam.
@@ -28,14 +30,15 @@ async function app() {
 
       if(result.confidences[result.label] > 0.90){
         document.getElementById('console').innerText = "Login as "+result.label;
+        document.getElementById('hiddenAuthData').value = result.label;
       }else{
         document.getElementById('console').innerText = "Unrecognized User (Login with Username/Password)";
+        document.getElementById('hiddenAuthData').value = "";
       }
     }
     await tf.nextFrame();
   }
 }
-
 
 // setup webcam
 async function setupWebcam() {
@@ -73,4 +76,12 @@ function loadClassifierFromLocalStorage() {
     classifier.setClassifierDataset(tensorObj)
   }
   return classifier;
+}
+
+function userLogin(textContent){
+  if(textContent == ""){
+      alert("Please register to proceed");
+  }else{
+    alert("Welcome "+textContent);
+  }
 }
