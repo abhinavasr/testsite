@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <!-- Load the latest version of TensorFlow.js -->
+    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+    <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+    <link rel="stylesheet" href="css/base.css">
+  </head>
+  <body>
+    
+    <!-- Add an image that we will use to test -->
+    
+    <!-- Load index.js after the content of the page -->
+    <script src="js/register.js"></script>
+
+    <div class="login-page">
+      <div class="form">
+          <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
+          <input id="username" type="text" placeholder="Username"/>
+          <button id="class-a">Register</button>
+          <p class="message">Already registered? <a href="index.html">Click here to Login</a></p>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
